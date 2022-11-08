@@ -3,6 +3,8 @@ package com.example.speedreading
 import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.util.TypedValue
 import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -13,18 +15,18 @@ import kotlinx.coroutines.delay
 
 
 class MainActivity : AppCompatActivity() {
-    lateinit var speedText: TextView
-    lateinit var start: Button
-    lateinit var textSpeed: Slider
-    lateinit var textSize: Slider
+    private lateinit var speedText: TextView
+    private lateinit var start: Button
+    private lateinit var textSpeed: Slider
+    private lateinit var textSize: Slider
 
     private var isRunning = false
     private var isContinuing = true
     private val textToRead = "Everyone is entitled to all the rights and freedoms set forth in this Declaration, without distinction of any kind, such as race, colour, sex, language, religion, political or other opinion, national or social origin, property, birth or other status. Furthermore, no distinction shall be made on the basis of the political, jurisdictional or international status of the country or territory to which a person belongs, whether it be independent, trust, non-self-governing or under any other limitation of sovereignty."
     private var listToRead = textToRead.split(" ")
-    private var wordPerMin = 300
-    lateinit var pause: Button
-    lateinit var layout: ConstraintLayout
+    private var wordPerMin =300
+    private lateinit var pause: Button
+    private lateinit var layout: ConstraintLayout
     //var job: Job? = null
 
 
@@ -38,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         textSpeed = findViewById(R.id.textSpeed)
         textSize = findViewById(R.id.textSize)
         layout = findViewById(R.id.layout)
+        wordPerMin = textSpeed.value.toInt()
         var lastWord = 0
         fun printWords(){
             GlobalScope.launch {
@@ -49,6 +52,11 @@ class MainActivity : AppCompatActivity() {
                         delay((60000/wordPerMin).toLong())
                         if(i == listToRead.size-1){
                             runOnUiThread { speedText.text = "" }
+                            layout.removeView(pause)
+                            isRunning = false
+                            isContinuing = true
+                            start.text = "Start"
+                            lastWord = 0
                         }
                     } else {
                         break
@@ -63,7 +71,9 @@ class MainActivity : AppCompatActivity() {
                 start.text = "Start"
                 speedText.text = ""
                 layout.removeView(pause)
+                lastWord = 0
             } else {
+                Log.d("test", "message1")
                 isRunning = true
                 start.text = "Stop"
                 pause.text="Pause"
@@ -82,6 +92,13 @@ class MainActivity : AppCompatActivity() {
                 printWords()
             }
         }
+        textSize.addOnChangeListener{
+                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value*50)
+        }
+        textSpeed.addOnChangeListener{
+            _, value, _ ->wordPerMin = value.toInt()
+        }
+    }
 
-    }
-    }
+}
+
