@@ -81,8 +81,19 @@
         android:backgroundTint="#454545"
         android:text="Submit"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/selectButton"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInput" />
+
+    <Button
+        android:id="@+id/selectButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select"
+        android:backgroundTint="#454545"
+        app:layout_constraintBottom_toTopOf="@+id/speedText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/submit"
         app:layout_constraintTop_toBottomOf="@+id/textInput" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

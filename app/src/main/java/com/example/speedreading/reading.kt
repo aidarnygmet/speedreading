@@ -22,6 +22,7 @@ class reading : AppCompatActivity() {
     private lateinit var stop: ImageButton
     private lateinit var inc: ImageButton
     private lateinit var dec: ImageButton
+    private lateinit var wpm: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reading)
@@ -30,12 +31,14 @@ class reading : AppCompatActivity() {
         stop = findViewById(R.id.stopButton)
         inc = findViewById(R.id.increase)
         dec = findViewById(R.id.decrease)
+        wpm = findViewById(R.id.textView3)
         val extras = intent.extras
         if (extras != null) {
             listToRead = extras.getString("text").toString().split(" ")
             speed = extras.getInt("speed")
             size = extras.getFloat("size")
             text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size*50)
+            wpm.text = speed.toString()
         }
 
         printWords()
@@ -54,9 +57,11 @@ class reading : AppCompatActivity() {
         }
         dec.setOnClickListener {
             speed-=10
+            wpm.text = speed.toString()
         }
         inc.setOnClickListener {
             speed+=10
+            wpm.text = speed.toString()
         }
     }
     private fun printWords(){
