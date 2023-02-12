@@ -22,73 +22,28 @@ import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var speedText: TextView
-    private lateinit var start: ImageButton
-    private lateinit var textSpeed: Slider
-    private lateinit var textSize: Slider
-    private lateinit var textInput: EditText
-    private lateinit var submit: Button
-    private lateinit var select: Button
-    private var textToRead = ""
 
-    val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        // Handle the returned Uri
-
-        if (uri != null) {
-
-            var g = application.contentResolver.openInputStream(uri)
-            val reader = BufferedReader(g?.reader() )
-            var content: String
-            reader.use { reader ->
-                textToRead = reader.readText()
-            }
-
-            Toast.makeText(this@MainActivity,"File is opened",Toast.LENGTH_SHORT).show()
-        };
-    }
-
+    private lateinit var mainButton: Button
+    private lateinit var exercisesButton: Button
+    private lateinit var profileButton: Button
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        submit = findViewById(R.id.submit)
-        select = findViewById(R.id.selectButton)
-        textInput = findViewById(R.id.textInput)
-        speedText = findViewById(R.id.speedText)
-        start = findViewById(R.id.startButton)
-        textSpeed = findViewById(R.id.textSpeed)
-        textSize = findViewById(R.id.textSize)
-
-
-        submit.setOnClickListener {
-            textToRead = textInput.text.toString()
-            Log.d("test", textToRead)
+        mainButton = findViewById(R.id.button6)
+        exercisesButton = findViewById(R.id.button5)
+        profileButton = findViewById(R.id.button4)
+        mainButton.setOnClickListener{
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, MainFragment.newInstance("1", "2")).commit()
+        }
+        profileButton.setOnClickListener{
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, Profile.newInstance("1", "2")).commit()
+        }
+        exercisesButton.setOnClickListener{
+            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, exercises.newInstance("1", "2")).commit()
         }
 
-
-        start.setOnClickListener(View.OnClickListener { v: View? ->
-            // Intents are objects of the android.content.Intent type. Your code can send them to the Android system defining
-            // the components you are targeting. Intent to start an activity called SecondActivity with the following code.
-            val intent = Intent(this, reading::class.java)
-            // start the activity connect to the specified class
-            intent.putExtra("text", textToRead)
-            intent.putExtra("speed", textSpeed.value.toInt())
-            intent.putExtra("size", textSize.value)
-            startActivity(intent)
-        })
-
-
-        textSize.addOnChangeListener{
-                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value*50)
-        }
-
-        select.setOnClickListener {
-            getContent.launch("text/*")
-
-        }
     }
-
-
 }
 
 
