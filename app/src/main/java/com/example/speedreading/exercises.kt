@@ -1,11 +1,25 @@
 package com.example.speedreading
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import com.google.android.material.tabs.TabLayout
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
+import retrofit2.*
+import java.util.*
+import retrofit2.converter.gson.GsonConverterFactory
+import java.lang.Exception
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,7 +36,7 @@ class exercises : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var schulte: Button
-    private lateinit var los: Button
+    private lateinit var losb: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,11 +52,15 @@ class exercises : Fragment() {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_exercises, container, false)
         schulte = view.findViewById(R.id.schulte)
-        los = view.findViewById(R.id.los)
-        los.setOnClickListener {
+        losb = view.findViewById(R.id.los)
+        losb.setOnClickListener{
+            val intent = Intent(activity, los::class.java)
+            Log.d("test", "init2")
+            startActivity(intent)
+            }
 
-        }
-        return inflater.inflate(R.layout.fragment_exercises, container, false)
+
+        return view
     }
 
     companion object {
