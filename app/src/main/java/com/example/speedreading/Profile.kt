@@ -2,6 +2,7 @@ package com.example.speedreading
 
 import android.os.Bundle
 import android.util.Log
+import java.util.Calendar
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.await
+import retrofit2.awaitResponse
+import retrofit2.converter.gson.GsonConverterFactory
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -43,21 +51,47 @@ class Profile : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_profile, container, false)
-        signin = view.findViewById(R.id.signin)!!
-        signup = view.findViewById(R.id.signup)!!
+        signin = view.findViewById(R.id.signin)
+        signup = view.findViewById(R.id.signup)
         username = view.findViewById(R.id.username)
         password = view.findViewById(R.id.password)
+        var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.70:8080").addConverterFactory(
+            GsonConverterFactory.create()).build().create(com.example.speedreading.usersApi::class.java)
         signin.setOnClickListener {
-//            if(username.text.toString() != "admin" && password.text.toString() != "12345678"){
-//                Toast.makeText(activity, "Wrong username or password",Toast.LENGTH_SHORT).show()
-//            } else {
-//                Toast.makeText(activity, "Success",Toast.LENGTH_SHORT).show()
-//            }
-            Log.d("test", "toast")
-            //Toast.makeText(activity, "Success",Toast.LENGTH_SHORT).show()
+            GlobalScope.launch() {
+            val usersList = usersApi.getAllUsers().await()
+            val user = users(username.text.toString(), password.text.toString(), "", "", 0)
+            var success = 0
+            usersList.forEach{
+                if(user.username == it.username && user.password == it.password){
+                    success = 1
+                    Log.d("test", it.user_id.toString())
+                    var bundle = Bundle()
+                    bundle.putString("key", it.user_id.toString())
+                    parentFragmentManager.setFragmentResult("userId", bundle)
+                }
+            }
+                if(success != 0){
+                    Log.d("test", "Signed in")
+                } else {
+                    Log.d("test", "Sign in failed")
+                }
+
+            }
+        }
+        signup.setOnClickListener {
+            GlobalScope.launch(){
+                val user = users(username.text.toString(), password.text.toString(), Calendar.getInstance().time.toString(), "", 0)
+                val response = usersApi.save(user).awaitResponse()
+                if (response.isSuccessful) {
+                    Log.d("test", "Sign up succesfull")
+                } else {
+                    Log.d("test", "Sign up failed")
+                }
+            }
         }
 
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        return view
     }
 
     companion object {
