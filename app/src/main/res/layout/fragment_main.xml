@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="#000000"
     tools:context=".MainFragment">
 
     <EditText
@@ -36,7 +35,6 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#454545"
         android:text="Submit"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="@+id/selectButton"
@@ -47,18 +45,17 @@
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#454545"
         android:text="Select"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"
-        app:layout_constraintTop_toBottomOf="@+id/textInput"/>
-         />
+        app:layout_constraintTop_toBottomOf="@+id/textInput" />
+        >
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSpeed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="36dp"
         android:valueFrom="10"
         android:valueTo="500"
         app:layout_constraintBottom_toTopOf="@id/textSize"
@@ -72,8 +69,8 @@
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="290dp"
+        android:layout_height="38dp"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +85,6 @@
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#454545"
         android:src="@drawable/play"
 
         app:layout_constraintBottom_toBottomOf="parent"
