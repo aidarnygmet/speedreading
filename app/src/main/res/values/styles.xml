@@ -26,6 +26,7 @@
     <style name="ButtonStyle" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:backgroundTint">@color/Accent</item>
+        <item name="android:background">@drawable/ripple</item>
     </style>
 
     <!-- Edit text style. -->
