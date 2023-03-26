@@ -36,7 +36,7 @@ class Profile : Fragment() {
     private lateinit var signup: Button
     private lateinit var username: EditText
     private lateinit var password: EditText
-
+    private lateinit var bundle: Bundle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -55,38 +55,45 @@ class Profile : Fragment() {
         signup = view.findViewById(R.id.signup)
         username = view.findViewById(R.id.username)
         password = view.findViewById(R.id.password)
-        var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.70:8080").addConverterFactory(
+        var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
             GsonConverterFactory.create()).build().create(com.example.speedreading.usersApi::class.java)
         signin.setOnClickListener {
             GlobalScope.launch() {
             val usersList = usersApi.getAllUsers().await()
-            val user = users(username.text.toString(), password.text.toString(), "", "", 0)
+            val user = users(username.text.toString(), password.text.toString(),  -1)
             var success = 0
             usersList.forEach{
                 if(user.username == it.username && user.password == it.password){
                     success = 1
-                    Log.d("test", it.user_id.toString())
-                    var bundle = Bundle()
+                    bundle = Bundle()
                     bundle.putString("key", it.user_id.toString())
                     parentFragmentManager.setFragmentResult("userId", bundle)
                 }
             }
                 if(success != 0){
                     Log.d("test", "Signed in")
+                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in successful", Toast.LENGTH_SHORT).show()})
+                    val fragment_user = fragment_user()
+                    fragment_user.arguments= bundle
+                    requireActivity().supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView1, fragment_user).commit()
                 } else {
                     Log.d("test", "Sign in failed")
+                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in failed", Toast.LENGTH_SHORT).show()})
                 }
 
             }
         }
         signup.setOnClickListener {
             GlobalScope.launch(){
-                val user = users(username.text.toString(), password.text.toString(), Calendar.getInstance().time.toString(), "", 0)
+                val user = users(username.text.toString(), password.text.toString(),  -1)
                 val response = usersApi.save(user).awaitResponse()
                 if (response.isSuccessful) {
                     Log.d("test", "Sign up succesfull")
+                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up successful", Toast.LENGTH_SHORT).show()})
                 } else {
                     Log.d("test", "Sign up failed")
+                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up failed", Toast.LENGTH_SHORT).show()})
                 }
             }
         }

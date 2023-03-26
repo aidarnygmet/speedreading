@@ -9,4 +9,21 @@
     <string name="example">Example</string>
     <string name="submit">Submit</string>
     <string name="select">Select</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome!"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="dropdown_menu">Select exercise</string>
+    <string-array name="exercises">
+        <item>Schulte Table</item>
+        <item>Line of Sight</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>
