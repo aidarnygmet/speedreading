@@ -45,10 +45,10 @@ class reading : AppCompatActivity() {
         pause.setOnClickListener {
             if(isRunning){
                 isRunning = false
-                pause.setImageResource(R.drawable.play)
+                pause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24)
             } else {
                 isRunning = true
-                pause.setImageResource(R.drawable.pause)
+                pause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24)
                 printWords()
             }
         }
