@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".reading">
+    tools:context=".Reading">
 
     <TextView
         android:id="@+id/speedText"
@@ -19,30 +19,30 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
-        android:id="@+id/pauseButton"
+        android:id="@+id/pausereading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector"
+        android:contentDescription="@string/pause_button"
         android:src="@drawable/ic_baseline_pause_circle_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/stopButton"
+        app:layout_constraintEnd_toStartOf="@id/stopreading"
         app:layout_constraintStart_toEndOf="@id/decrease"
         app:layout_constraintTop_toBottomOf="@+id/speedText"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/pause_button" />
+        tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
 
     <ImageButton
-        android:id="@+id/stopButton"
+        android:id="@+id/stopreading"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector"
+        android:contentDescription="@string/stop_button"
         android:src="@drawable/ic_baseline_stop_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/increase"
-        app:layout_constraintStart_toEndOf="@+id/pauseButton"
+        app:layout_constraintStart_toEndOf="@+id/pausereading"
         app:layout_constraintTop_toBottomOf="@+id/speedText"
-        tools:ignore="SpeakableTextPresentCheck"
-        android:contentDescription="@string/stop_button" />
+        tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck" />
 
     <ImageButton
         android:id="@+id/increase"
@@ -52,7 +52,7 @@
         android:src="@drawable/ic_baseline_fast_forward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/stopButton"
+        app:layout_constraintStart_toEndOf="@+id/stopreading"
         app:layout_constraintTop_toBottomOf="@+id/speedText"
         tools:ignore="SpeakableTextPresentCheck"
         android:contentDescription="@string/fast_forward" />
@@ -64,7 +64,7 @@
         android:background="@drawable/selector"
         android:src="@drawable/ic_baseline_fast_rewind_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/pauseButton"
+        app:layout_constraintEnd_toStartOf="@id/pausereading"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/speedText"
         tools:ignore="SpeakableTextPresentCheck"
@@ -98,9 +98,8 @@
         android:id="@+id/textView3"
         android:layout_width="61dp"
         android:layout_height="29dp"
-
         android:layout_marginTop="48dp"
-        app:layout_constraintEnd_toStartOf="@+id/pauseButton"
+        app:layout_constraintEnd_toStartOf="@+id/pausereading"
         app:layout_constraintHorizontal_bias="0.593"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.properties.Delegates
 
-class reading : AppCompatActivity() {
+class Reading : AppCompatActivity() {
     private var listToRead = listOf<String>()
     private var speed = 0
     private var size: Float = 0.0F
@@ -27,8 +27,8 @@ class reading : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reading)
         text = findViewById(R.id.speedText)
-        pause = findViewById(R.id.pauseButton)
-        stop = findViewById(R.id.stopButton)
+        pause = findViewById(R.id.pausereading)
+        stop = findViewById(R.id.stopreading)
         inc = findViewById(R.id.increase)
         dec = findViewById(R.id.decrease)
         wpm = findViewById(R.id.textView3)

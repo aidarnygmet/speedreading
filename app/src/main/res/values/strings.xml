@@ -14,5 +14,21 @@
     <string name="pause_button">Pause button</string>
     <string name="stop_button">Stop button</string>
     <string name="fast_forward">Fast forward</string>
+    <string name="line_of_sight">Line of Sight</string>
+    <string name="schulte_table">Schulte Table</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_in">Sign In</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <string name="exercises">Exercises</string>
+    <string name="profile">Profile</string>
+    <string name="main">Main</string>
     <string name="fast_back">Fast back</string>
+    <string name="_stars">* * * * * * *</string>
+    <string name="_stars2">* * * * * * *</string>
+    <string name="_stars3">* * * * * * *</string>
+    <string name="_stars4">* * * * * * *</string>
+    <string name="_stars5">* * * * * * *</string>
+    <string name="size">Size</string>
+    <string name="speed">Speed</string>
 </resources>

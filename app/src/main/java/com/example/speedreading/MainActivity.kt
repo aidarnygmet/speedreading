@@ -30,9 +30,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainButton = findViewById(R.id.button6)
-        exercisesButton = findViewById(R.id.button5)
-        profileButton = findViewById(R.id.button4)
+        mainButton = findViewById(R.id.mainpage)
+        exercisesButton = findViewById(R.id.exercises)
+        profileButton = findViewById(R.id.profile)
         mainButton.setOnClickListener{
             supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, MainFragment.newInstance("1", "2")).commit()
         }
