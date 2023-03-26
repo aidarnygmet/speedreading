@@ -23,10 +23,10 @@
             android:text="Line of Sight" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/evenNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Even Numbers" />
 
         <Button
             android:id="@+id/button7"
