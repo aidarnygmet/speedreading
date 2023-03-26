@@ -9,4 +9,10 @@
     <string name="example">Example</string>
     <string name="submit">Submit</string>
     <string name="select">Select</string>
+    <string name="_10_words_per_min">-10 words per min</string>
+    <string name="_plus_10_words_per_min">+10 words per min</string>
+    <string name="pause_button">Pause button</string>
+    <string name="stop_button">Stop button</string>
+    <string name="fast_forward">Fast forward</string>
+    <string name="fast_back">Fast back</string>
 </resources>

@@ -22,52 +22,60 @@
         android:id="@+id/pauseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_baseline_pause_circle_filled_24"
         android:background="@drawable/selector"
+        android:src="@drawable/ic_baseline_pause_circle_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/stopButton"
         app:layout_constraintStart_toEndOf="@id/decrease"
-        app:layout_constraintTop_toBottomOf="@+id/speedText" />
+        app:layout_constraintTop_toBottomOf="@+id/speedText"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/pause_button" />
 
     <ImageButton
         android:id="@+id/stopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src = "@drawable/ic_baseline_stop_circle_24"
         android:background="@drawable/selector"
+        android:src="@drawable/ic_baseline_stop_circle_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/increase"
         app:layout_constraintStart_toEndOf="@+id/pauseButton"
-        app:layout_constraintTop_toBottomOf="@+id/speedText" />
+        app:layout_constraintTop_toBottomOf="@+id/speedText"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/stop_button" />
 
     <ImageButton
         android:id="@+id/increase"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src = "@drawable/ic_baseline_fast_forward_24"
         android:background="@drawable/selector"
+        android:src="@drawable/ic_baseline_fast_forward_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/stopButton"
-        app:layout_constraintTop_toBottomOf="@+id/speedText" />
+        app:layout_constraintTop_toBottomOf="@+id/speedText"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/fast_forward" />
 
     <ImageButton
         android:id="@+id/decrease"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src = "@drawable/ic_baseline_fast_rewind_24"
         android:background="@drawable/selector"
+        android:src="@drawable/ic_baseline_fast_rewind_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/pauseButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/speedText" />
+        app:layout_constraintTop_toBottomOf="@+id/speedText"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/fast_back" />
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:text="-10 words per min"
+        android:text="@string/_10_words_per_min"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/decrease"
@@ -79,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="36dp"
-        android:text="+10 words per min"
+        android:text="@string/_plus_10_words_per_min"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/increase"
