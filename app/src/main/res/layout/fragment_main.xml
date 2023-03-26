@@ -12,18 +12,20 @@
         android:layout_width="294dp"
         android:layout_height="85dp"
         android:ems="10"
-        android:hint="Enter text here"
+        android:hint="@string/enter_text_here"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="text"
+        android:importantForAutofill="no" />
 
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Example"
+        android:text="@string/example"
         android:textColor="#FFFFFF"
         android:textSize="80sp"
         app:layout_constraintBottom_toTopOf="@+id/textSpeed"
@@ -35,7 +37,7 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/submit"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="@+id/selectButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,7 +47,7 @@
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select"
+        android:text="@string/select"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"
@@ -65,7 +67,8 @@
         app:thumbColor="#FFFFFF"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#FFFFFF"
-        app:trackColorInactive="#FFFFFF" />
+        app:trackColorInactive="#FFFFFF"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSize"
@@ -79,13 +82,15 @@
         app:tickColorActive="#FFFFFF"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#FFFFFF"
-        app:trackColorInactive="#FFFFFF" />
+        app:trackColorInactive="#FFFFFF"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector"
+        android:contentDescription="@string/start"
         android:src="@drawable/ic_baseline_play_circle_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
