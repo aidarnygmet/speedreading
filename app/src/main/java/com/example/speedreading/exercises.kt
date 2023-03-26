@@ -72,6 +72,11 @@ class exercises : Fragment() {
             startActivity(intent)
             }
 
+        schulte.setOnClickListener{
+            val intent = Intent(activity, Schulte::class.java)
+
+            startActivity(intent)
+        }
 
         return view
     }
