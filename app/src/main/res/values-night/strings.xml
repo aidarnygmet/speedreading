@@ -2,4 +2,7 @@
 <resources>
     <string name="enter_text_here">Enter text here</string>
     <string name="_stars">* * * * * * *</string>
+    <string name="_time_elapsed">0</string>
+    <string name="_en_ex_timer">02:00</string>
+    <string name="even_numbers_ex">Even Numbers</string>
 </resources>

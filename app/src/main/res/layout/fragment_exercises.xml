@@ -29,13 +29,14 @@
             android:id="@+id/evenNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Even Numbers" />
+            android:text="@string/even_numbers_ex" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Button"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <Button
             android:id="@+id/button8"
