@@ -39,6 +39,7 @@ class exercises : Fragment() {
     private var param2: String? = null
     private lateinit var schulte: Button
     private lateinit var losb: Button
+    private lateinit var evenNum: Button
     private var result:String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,7 +61,7 @@ class exercises : Fragment() {
 
         }
 
-
+        evenNum = view.findViewById(R.id.evenNum)
         schulte = view.findViewById(R.id.schulte)
         losb = view.findViewById(R.id.los)
         losb.setOnClickListener{
@@ -72,6 +73,16 @@ class exercises : Fragment() {
             startActivity(intent)
             }
 
+        schulte.setOnClickListener{
+            val intent = Intent(activity, Schulte::class.java)
+
+            startActivity(intent)
+        }
+
+        evenNum.setOnClickListener{
+            val intent = Intent(activity, EvenNum::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
