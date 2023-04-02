@@ -1,5 +1,6 @@
 package com.example.speedreading
 
+import android.annotation.SuppressLint
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -40,6 +41,7 @@ class exercises : Fragment() {
     private lateinit var schulte: Button
     private lateinit var losb: Button
     private var result:String? = null
+    private lateinit var evenNum: Button
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -48,6 +50,7 @@ class exercises : Fragment() {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,6 +66,7 @@ class exercises : Fragment() {
 
         schulte = view.findViewById(R.id.schulte)
         losb = view.findViewById(R.id.los)
+        evenNum = view.findViewById(R.id.evenNum)
         losb.setOnClickListener{
             val intent = Intent(activity, los::class.java)
             intent.putExtra("userId", result)
@@ -71,6 +75,22 @@ class exercises : Fragment() {
             }
             startActivity(intent)
             }
+        schulte.setOnClickListener{
+            val intent = Intent(activity, Schulte::class.java)
+            intent.putExtra("userId", result)
+            if (result != null) {
+                Log.d("test", result!!)
+            }
+            startActivity(intent)
+        }
+        evenNum.setOnClickListener{
+            val intent = Intent(activity, EvenNum::class.java)
+            intent.putExtra("userId", result)
+            if (result != null) {
+                Log.d("test", result!!)
+            }
+            startActivity(intent)
+        }
 
 
         return view

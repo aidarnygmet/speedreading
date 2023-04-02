@@ -36,8 +36,6 @@ class fragment_user : Fragment() {
     private lateinit var user_id:String
     private lateinit var email: String
 
-    private var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
-        GsonConverterFactory.create()).build().create(com.example.speedreading.usersApi::class.java)
     private var performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
         GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -101,10 +99,10 @@ GlobalScope.launch {
                     var item = p0.getItemAtPosition(p2)
                     Log.d("test", item.toString())
                     if(item.toString() == "Schulte Table"){
-                        drawGraph(1)
-                    } else if(item.toString() == "Line of Sight"){
                         drawGraph(2)
-                    } else if(item.toString() =="3"){
+                    } else if(item.toString() == "Line of Sight"){
+                        drawGraph(1)
+                    } else if(item.toString() =="Even Numbers"){
                         drawGraph(3)
                     }
                     else if(item.toString() =="4"){
