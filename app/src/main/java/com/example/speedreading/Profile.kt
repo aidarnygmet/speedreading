@@ -10,6 +10,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -37,6 +41,8 @@ class Profile : Fragment() {
     private lateinit var username: EditText
     private lateinit var password: EditText
     private lateinit var bundle: Bundle
+    private lateinit var auth: FirebaseAuth
+    private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -55,50 +61,118 @@ class Profile : Fragment() {
         signup = view.findViewById(R.id.signup)
         username = view.findViewById(R.id.username)
         password = view.findViewById(R.id.password)
-        var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
-            GsonConverterFactory.create()).build().create(com.example.speedreading.usersApi::class.java)
+        auth = Firebase.auth
         signin.setOnClickListener {
-            GlobalScope.launch() {
-            val usersList = usersApi.getAllUsers().await()
-            val user = users(username.text.toString(), password.text.toString(),  -1)
-            var success = 0
-            usersList.forEach{
-                if(user.username == it.username && user.password == it.password){
-                    success = 1
-                    bundle = Bundle()
-                    bundle.putString("key", it.user_id.toString())
-                    parentFragmentManager.setFragmentResult("userId", bundle)
-                }
-            }
-                if(success != 0){
-                    Log.d("test", "Signed in")
-                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in successful", Toast.LENGTH_SHORT).show()})
-                    val fragment_user = fragment_user()
-                    fragment_user.arguments= bundle
-                    requireActivity().supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView1, fragment_user).commit()
-                } else {
-                    Log.d("test", "Sign in failed")
-                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in failed", Toast.LENGTH_SHORT).show()})
-                }
+//            GlobalScope.launch() {
+//            val usersList = usersApi.getAllUsers().await()
+//            val user = users(username.text.toString(), password.text.toString(),  -1)
+//            var success = 0
+//            usersList.forEach{
+//                if(user.username == it.username && user.password == it.password){
+//                    success = 1
+//                    bundle = Bundle()
+//                    bundle.putString("key", it.user_id.toString())
+//                    parentFragmentManager.setFragmentResult("userId", bundle)
+//                }
+//            }
+//                if(success != 0){
+//                    Log.d("test", "Signed in")
+//                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in successful", Toast.LENGTH_SHORT).show()})
+//                    val fragment_user = fragment_user()
+//                    fragment_user.arguments= bundle
+//                    requireActivity().supportFragmentManager.beginTransaction()
+//                        .replace(R.id.fragmentContainerView1, fragment_user).commit()
+//                } else {
+//                    Log.d("test", "Sign in failed")
+//                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing in failed", Toast.LENGTH_SHORT).show()})
+//                }
+//
+//            }
+            val email = username.text.toString()
+            val password = password.text.toString()
+            if(!email.matches(emailPattern.toRegex())){
+                Log.d("test", "email incorrect")
+                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper email", Toast.LENGTH_SHORT).show()})
+            } else if(password.isEmpty() || password.length<8){
+                Log.d("test", "password incorrect")
+                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper password", Toast.LENGTH_SHORT).show()})
+            } else {
+                activity?.let { it ->
+                    auth.signInWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(it) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("test", "SignWithEmail:success")
+                                val user = auth.currentUser
+                                updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("test", "SignWithEmail:failure", task.exception)
+                                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Registration failed", Toast.LENGTH_SHORT).show()})
 
+                            }
+                        }
+                }
             }
         }
         signup.setOnClickListener {
-            GlobalScope.launch(){
-                val user = users(username.text.toString(), password.text.toString(),  -1)
-                val response = usersApi.save(user).awaitResponse()
-                if (response.isSuccessful) {
-                    Log.d("test", "Sign up succesfull")
-                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up successful", Toast.LENGTH_SHORT).show()})
-                } else {
-                    Log.d("test", "Sign up failed")
-                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up failed", Toast.LENGTH_SHORT).show()})
+//            GlobalScope.launch(){
+//                val user = users(username.text.toString(), password.text.toString(),  -1)
+//                val response = usersApi.save(user).awaitResponse()
+//                if (response.isSuccessful) {
+//                    Log.d("test", "Sign up succesfull")
+//                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up successful", Toast.LENGTH_SHORT).show()})
+//                } else {
+//                    Log.d("test", "Sign up failed")
+//                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up failed", Toast.LENGTH_SHORT).show()})
+//                }
+//            }
+            val email = username.text.toString()
+            val password = password.text.toString()
+            if(!email.matches(emailPattern.toRegex())){
+                Log.d("test", "email incorrect")
+                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper email", Toast.LENGTH_SHORT).show()})
+            } else if(password.isEmpty() || password.length<8){
+                Log.d("test", "password incorrect")
+                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper password", Toast.LENGTH_SHORT).show()})
+            } else {
+                activity?.let { it1 ->
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(it1) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d("test", "createUserWithEmail:success")
+                                val user = auth.currentUser
+                                updateUI(user)
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w("test", "createUserWithEmail:failure", task.exception)
+                                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Registration failed", Toast.LENGTH_SHORT).show()})
+
+                            }
+                        }
                 }
             }
         }
 
         return view
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
+        bundle = Bundle()
+        if (user != null) {
+            bundle.putString("key", user.uid)
+            bundle.putString("email", username.text.toString())
+            parentFragmentManager.setFragmentResult("userId", bundle)
+            val fragment_user = fragment_user()
+            fragment_user.arguments= bundle
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView1, fragment_user).commit()
+            Log.d("test", "wtf")
+        } else {
+            activity?.runOnUiThread { Toast.makeText(activity, "User already exists", Toast.LENGTH_SHORT) }
+        }
+
     }
 
     companion object {

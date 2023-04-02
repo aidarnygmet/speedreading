@@ -5,7 +5,7 @@ class performance(
 
     val exerciseId: Int,
 
-    val userId: Int,
+    val userId: String,
 
     val score: Int,
 

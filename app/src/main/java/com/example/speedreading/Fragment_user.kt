@@ -17,7 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.await
 import retrofit2.converter.gson.GsonConverterFactory
 import java.text.SimpleDateFormat
-import kotlin.properties.Delegates
+
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -33,8 +33,9 @@ class fragment_user : Fragment() {
     private lateinit var spinner: Spinner
     private lateinit var bundle:Bundle
     private lateinit var showText: TextView
-    private var user_id by Delegates.notNull<Int>()
-    private lateinit var username: String
+    private lateinit var user_id:String
+    private lateinit var email: String
+
     private var usersApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
         GsonConverterFactory.create()).build().create(com.example.speedreading.usersApi::class.java)
     private var performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
@@ -56,27 +57,30 @@ class fragment_user : Fragment() {
         // Inflate the layout for this fragment
         bundle = requireArguments()
         if(bundle!=null){
-            user_id = bundle.getString("key")?.toInt()!!
-        }
+            user_id = bundle.getString("key").toString()
+            email = bundle.getString("email").toString()
 
+        }
         showText = view.findViewById(R.id.textView27)
-
-
-        GlobalScope.launch{
-            val usersList = usersApi.getAllUsers().await()
-            usersList.forEach{
-                if(user_id == it.user_id){
-                    Log.d("test", "${it.username}")
-                    username = it.username
-
-                }
-            }
-            activity?.runOnUiThread { changetext(username) }
-        }
-
-
         spinner = view.findViewById(R.id.spinner)
-        drawGraph()
+        Log.d("test", email)
+GlobalScope.launch {
+    activity?.runOnUiThread {
+        changetext(email)
+        val adapter = getContext()?.let {
+            ArrayAdapter.createFromResource(
+                it, R.array.exercises,
+                android.R.layout.simple_spinner_item
+            )
+        }
+        if (adapter != null) {
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        }
+        spinner.adapter = adapter
+    }
+}
+
+            //changetext(email)
 //        if (container != null) {
 //            ArrayAdapter.createFromResource(
 //                container.context,
@@ -91,25 +95,40 @@ class fragment_user : Fragment() {
 //            }
 //        }
 
-//        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
-//            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
-//                if (p0 != null) {
-//                    var item = p0.getItemAtPosition(p2)
-//                    Log.d("test", item.toString())
-//                }
-//            }
-//            override fun onNothingSelected(p0: AdapterView<*>?) {
-//                Log.d("test", "nothing selected")
-//            }
-//        }
-        return inflater.inflate(R.layout.fragment_user, container, false)
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                if (p0 != null) {
+                    var item = p0.getItemAtPosition(p2)
+                    Log.d("test", item.toString())
+                    if(item.toString() == "Schulte Table"){
+                        drawGraph(1)
+                    } else if(item.toString() == "Line of Sight"){
+                        drawGraph(2)
+                    } else if(item.toString() =="3"){
+                        drawGraph(3)
+                    }
+                    else if(item.toString() =="4"){
+                        drawGraph(4)
+                    }
+                    else if(item.toString() =="5"){
+                        drawGraph(5)
+                    }
+
+                    //drawGraph(item)
+                }
+            }
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                Log.d("test", "nothing selected")
+            }
+        }
+        return view
     }
-    private fun drawGraph(){
+    private fun drawGraph(item: Int){
         GlobalScope.launch{
             var performances = performanceApi.getAllPerformance().await()
             var series: LineGraphSeries<DataPoint> = LineGraphSeries()
             performances.forEach{
-                if(user_id == it.userId && it.exerciseId == 1){
+                if(user_id == it.userId && it.exerciseId == item){
                     var formatter = SimpleDateFormat("E MMM dd HH:mm:ss z yyyy")
                     Log.d("test", formatter.parse(it.date).toString())
                     var datapoint = DataPoint(formatter.parse(it.date), it.score.toDouble())
@@ -119,6 +138,7 @@ class fragment_user : Fragment() {
             var graph: GraphView? = view?.findViewById(R.id.graph)
             if (graph != null) {
                 graph.title = "Performance"
+                graph.removeAllSeries()
                 graph.addSeries(series)
                 graph.gridLabelRenderer.labelFormatter = DateAsXAxisLabelFormatter(activity)
             }
@@ -128,7 +148,8 @@ class fragment_user : Fragment() {
     private fun changetext(text:String){
         var textview = view?.findViewById<TextView>(R.id.textView27)
         if (textview != null) {
-            textview.text = "Welcome, "+text+"!"
+            textview.textSize = 30F
+            textview.text = "Welcome, \n"+text+"!"
         }
     }
 

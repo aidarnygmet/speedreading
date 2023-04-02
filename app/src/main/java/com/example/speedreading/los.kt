@@ -19,7 +19,7 @@ import kotlin.properties.Delegates
 class los : AppCompatActivity() {
     private lateinit var actionButton: Button
     private var pressed by Delegates.notNull<Boolean>()
-    private var user_id by Delegates.notNull<Int>()
+    private  lateinit var user_id: String
     private lateinit var countDown: TextView
     private lateinit var list: Array<TextView>
     private val exercise_id = 1
@@ -65,7 +65,7 @@ class los : AppCompatActivity() {
         var countDownTimer = 40
         val extras = intent.extras
         if(extras != null){
-            user_id = extras.getString("userId")?.toInt()!!
+            user_id = extras.getString("userId").toString()
             Log.d("test", "los $user_id")
         }
         var performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
