@@ -1,15 +1,22 @@
 package com.example.speedreading
 
+import android.annotation.SuppressLint
+import android.graphics.RenderEffect
+import android.graphics.Shader
 import android.os.Bundle
 import android.util.Log
 import java.util.Calendar
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.RelativeLayout
+import android.widget.TextView
 import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
@@ -42,6 +49,7 @@ class Profile : Fragment() {
     private lateinit var password: EditText
     private lateinit var bundle: Bundle
     private lateinit var auth: FirebaseAuth
+    private lateinit var layer: ConstraintLayout
     private val emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +59,7 @@ class Profile : Fragment() {
         }
     }
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -61,7 +70,15 @@ class Profile : Fragment() {
         signup = view.findViewById(R.id.signup)
         username = view.findViewById(R.id.username)
         password = view.findViewById(R.id.password)
+        layer = view.findViewById(R.id.layercon)
         auth = Firebase.auth
+        val blurEffect = RenderEffect.createBlurEffect(
+            20f, //radiusX
+            20f, //radiusY
+            Shader.TileMode.CLAMP
+        )
+        //layer.setRenderEffect(blurEffect)
+
         signin.setOnClickListener {
 //            GlobalScope.launch() {
 //            val usersList = usersApi.getAllUsers().await()
@@ -127,32 +144,35 @@ class Profile : Fragment() {
 //                    activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Signing up failed", Toast.LENGTH_SHORT).show()})
 //                }
 //            }
-            val email = username.text.toString()
-            val password = password.text.toString()
-            if(!email.matches(emailPattern.toRegex())){
-                Log.d("test", "email incorrect")
-                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper email", Toast.LENGTH_SHORT).show()})
-            } else if(password.isEmpty() || password.length<8){
-                Log.d("test", "password incorrect")
-                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper password", Toast.LENGTH_SHORT).show()})
-            } else {
-                activity?.let { it1 ->
-                    auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(it1) { task ->
-                            if (task.isSuccessful) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d("test", "createUserWithEmail:success")
-                                val user = auth.currentUser
-                                updateUI(user)
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w("test", "createUserWithEmail:failure", task.exception)
-                                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Registration failed", Toast.LENGTH_SHORT).show()})
-
-                            }
-                        }
-                }
-            }
+//            val email = username.text.toString()
+//            val password = password.text.toString()
+//            if(!email.matches(emailPattern.toRegex())){
+//                Log.d("test", "email incorrect")
+//                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper email", Toast.LENGTH_SHORT).show()})
+//            } else if(password.isEmpty() || password.length<8){
+//                Log.d("test", "password incorrect")
+//                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Enter a proper password", Toast.LENGTH_SHORT).show()})
+//            } else {
+//                activity?.let { it1 ->
+//                    auth.createUserWithEmailAndPassword(email, password)
+//                        .addOnCompleteListener(it1) { task ->
+//                            if (task.isSuccessful) {
+//                                // Sign in success, update UI with the signed-in user's information
+//                                Log.d("test", "createUserWithEmail:success")
+//                                val user = auth.currentUser
+//                                updateUI(user)
+//                            } else {
+//                                // If sign in fails, display a message to the user.
+//                                Log.w("test", "createUserWithEmail:failure", task.exception)
+//                                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Registration failed", Toast.LENGTH_SHORT).show()})
+//
+//                            }
+//                        }
+//                }
+//            }
+            val fragment = Signup()
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainerView1, fragment).commit()
         }
 
         return view
@@ -195,3 +215,5 @@ class Profile : Fragment() {
             }
     }
 }
+
+

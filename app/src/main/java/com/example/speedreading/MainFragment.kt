@@ -78,9 +78,6 @@ class MainFragment : Fragment(){
         textSpeed = view.findViewById(R.id.textSpeed)!!
         textSize = view.findViewById(R.id.textSize)!!
 
-
-
-
         start.setOnClickListener(View.OnClickListener { v: View? ->
             // Intents are objects of the android.content.Intent type. Your code can send them to the Android system defining
             // the components you are targeting. Intent to start an activity called SecondActivity with the following code.
@@ -94,7 +91,7 @@ class MainFragment : Fragment(){
 
 
         textSize.addOnChangeListener{
-                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value*50)
+                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value)
         }
 
         select.setOnClickListener {

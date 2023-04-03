@@ -1,43 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".exercises">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@drawable/background">
 
-        <Button
-            android:id="@+id/schulte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Schulte Table" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="300dp"
+            android:layout_height="500dp"
+            android:background="@drawable/layout_bg"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.496">
 
-        <Button
-            android:id="@+id/los"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Line of Sight" />
+            <Button
+                android:id="@+id/schulte"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="152dp"
+                android:layout_height="59dp"
+                android:layout_weight="1"
+                android:text="Schulte Table"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/los"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/evenNum"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Even Numbers" />
+            <Button
+                android:id="@+id/los"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="152dp"
+                android:layout_height="59dp"
+                android:layout_weight="1"
+                android:text="Line of Sight"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/evenNum"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/schulte" />
 
-        <Button
-            android:id="@+id/button7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
+            <Button
+                android:id="@+id/evenNum"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="152dp"
+                android:layout_height="59dp"
+                android:layout_weight="1"
+                android:text="Even Numbers"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/button7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/los"/>
 
-        <Button
-            android:id="@+id/button8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Button" />
-    </LinearLayout>
+            <Button
+                android:id="@+id/button7"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="152dp"
+                android:layout_height="59dp"
+                android:layout_weight="1"
+                android:text="Button"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toTopOf="@+id/button8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/evenNum"/>
+
+            <Button
+                android:id="@+id/button8"
+                style="@style/Widget.Material3.Button.ElevatedButton"
+                android:layout_width="152dp"
+                android:layout_height="59dp"
+                android:layout_weight="1"
+                android:text="Button"
+                android:textSize="17dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/button7"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>
