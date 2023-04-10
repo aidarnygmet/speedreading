@@ -8,31 +8,35 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp">
 
         <Button
             android:id="@+id/schulte"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Schulte Table" />
+            android:text="@string/schulte_table" />
 
         <Button
             android:id="@+id/los"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Line of Sight" />
+            android:text="@string/line_of_sight" />
 
         <Button
             android:id="@+id/evenNum"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Even Numbers" />
+            android:text="@string/even_numbers_ex" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Button"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
         <Button
             android:id="@+id/button8"
