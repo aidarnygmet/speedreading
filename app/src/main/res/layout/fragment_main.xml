@@ -52,7 +52,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"
         app:layout_constraintTop_toBottomOf="@+id/textInput" />
-    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/speed"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/textSpeed"
+        app:layout_constraintStart_toStartOf="@+id/textSpeed"
+        app:layout_constraintTop_toBottomOf="@+id/textSpeed" />
+
+    <TextView
+        android:id="@+id/speedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/size"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/textSize"
+        app:layout_constraintStart_toStartOf="@+id/textSize"
+        app:layout_constraintTop_toBottomOf="@+id/textSize" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSpeed"
@@ -66,7 +86,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/speedText"
         app:thumbColor="#808080"
-        app:tickColorActive="#a9a9a9"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#808080"
         app:trackColorInactive="#a9a9a9" />
@@ -83,7 +102,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textSpeed"
         app:thumbColor="#808080"
-        app:tickColorActive="#a9a9a9"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#808080"
         app:trackColorInactive="#a9a9a9" />
@@ -99,7 +117,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textSize" />
-    />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>

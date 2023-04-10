@@ -68,6 +68,7 @@ class Schulte : AppCompatActivity() {
             override fun onTick(millisUntilFinished: Long) {
                 count++
                 actualScore = count
+
                 timerTextView.text = count.toString()
             }
             override fun onFinish() {
@@ -101,7 +102,6 @@ class Schulte : AppCompatActivity() {
                                 Log.d("test", "fail")
                             }
                         }
-
                     }
                 }
             }

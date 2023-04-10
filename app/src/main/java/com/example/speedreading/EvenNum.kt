@@ -5,6 +5,7 @@ package com.example.speedreading
 //import androidx.navigation.ui.navigateUp
 //import androidx.navigation.ui.setupActionBarWithNavController
 //import com.example.evennumbers.databinding.ActivityMainBinding
+
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
@@ -34,6 +35,7 @@ class EvenNum : AppCompatActivity() {
     private var globalScore = 0
     private var clickedNumbers = mutableListOf<Int>()
     private var remainingTimeMillis = 2 * 60 * 1000L
+
     private lateinit var user_id:String
     private val exercise_id = 2
     private val performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
@@ -53,7 +55,6 @@ class EvenNum : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_even_num)
-
         findViewById<Button>(R.id.start_button).setOnClickListener {
             resetGame()
             startTimer()

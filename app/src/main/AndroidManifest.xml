@@ -26,6 +26,12 @@
             android:name=".los"
             android:exported="false" />
         <activity
+            android:name=".Schulte"
+            android:exported="false" />
+        <activity
+            android:name=".EvenNum"
+            android:exported="false" />
+        <activity
             android:name=".reading"
             android:exported="false" />
         <activity
