@@ -13,18 +13,20 @@
         android:layout_width="294dp"
         android:layout_height="85dp"
         android:ems="10"
-        android:hint="Enter text here"
+        android:hint="@string/enter_text_here_window"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:importantForAutofill="no"
+        android:inputType="text" />
 
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Example"
+        android:text="@string/example_text"
         android:background="#00000000"
         android:textColor="#a9a9a9"
         android:textSize="90sp"
@@ -37,7 +39,7 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="@string/submit_text"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="@+id/selectButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +49,7 @@
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Select"
+        android:text="@string/select_button"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"
@@ -56,7 +58,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/speed"
+        android:text="@string/speed_thingy"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/textSpeed"
@@ -67,7 +69,7 @@
         android:id="@+id/speedLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/size"
+        android:text="@string/size_thingy"
         android:textColor="#FFFFFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="@+id/textSize"
@@ -78,9 +80,9 @@
         android:id="@+id/textSpeed"
         android:layout_width="290dp"
         android:layout_height="36dp"
+        android:stepSize="50"
         android:valueFrom="10"
         android:valueTo="510"
-        android:stepSize="50"
         app:layout_constraintBottom_toTopOf="@id/textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,15 +90,16 @@
         app:thumbColor="#808080"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#808080"
-        app:trackColorInactive="#a9a9a9" />
+        app:trackColorInactive="#a9a9a9"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSize"
         android:layout_width="290dp"
         android:layout_height="38dp"
+        android:stepSize="10"
         android:valueFrom="20"
         android:valueTo="90"
-        android:stepSize="10"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -104,18 +107,21 @@
         app:thumbColor="#808080"
         app:tickColorInactive="#FFFFFF"
         app:trackColorActive="#808080"
-        app:trackColorInactive="#a9a9a9" />
+        app:trackColorInactive="#a9a9a9"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageButton
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector"
+        android:contentDescription="@string/play_button"
         android:src="@drawable/ic_baseline_play_circle_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSize" />
+        app:layout_constraintTop_toBottomOf="@+id/textSize"
+        tools:ignore="SpeakableTextPresentCheck,RedundantDescriptionCheck,RedundantDescriptionCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

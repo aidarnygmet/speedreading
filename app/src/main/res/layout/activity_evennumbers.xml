@@ -21,14 +21,11 @@
         android:layout_marginRight="16dp"
         android:layout_marginTop="32dp"/>
 
-
-
-
         <Button
         android:id="@+id/start_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_start_ex_en"
+        android:text="@string/start_ex_button"
         app:layout_constraintTop_toBottomOf="@id/textView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -566,7 +563,6 @@
 
     </LinearLayout>
 
-
     <Button
         android:id="@+id/timer_button"
         android:layout_width="wrap_content"
@@ -577,7 +573,7 @@
         app:layout_constraintTop_toBottomOf="@+id/layer10"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/_en_ex_timer"
+        android:text=""
         tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

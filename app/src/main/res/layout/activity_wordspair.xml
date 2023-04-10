@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Word Pairs"
+        android:text="@string/word_pairs_exn"
         android:textSize="48sp"
         android:textColor="@color/white"/>
 
@@ -18,18 +18,15 @@
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: 0"
+        android:text="@string/score_0"
         android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"/>
+        android:textStyle="bold" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:id="@+id/layer1"
-        android:layout_below="@+id/tvScore"
 
         >
 
@@ -38,186 +35,178 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/layer2"
-        android:layout_below="@+id/layer1"
-        >
+        android:id="@+id/layer2">
 
         <Button
             android:id="@+id/btn4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/layer3"
-        android:layout_below="@+id/layer2"
-        >
+        android:id="@+id/layer3">
 
         <Button
             android:id="@+id/btn7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/layer4"
-        android:layout_below="@+id/layer3"
-        >
+        android:id="@+id/layer4">
 
         <Button
             android:id="@+id/btn10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:id="@+id/layer5"
-        android:layout_below="@+id/layer4"
-        >
+        android:id="@+id/layer5">
 
         <Button
             android:id="@+id/btn13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Button
             android:id="@+id/btn15"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
-            android:textSize ="16dp"
-            android:textStyle="bold"
             android:layout_weight="1"
-            />
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
 
@@ -226,9 +215,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/layer3"
 
-        android:text="Start"/>
+        android:text="@string/start_wp_ex"/>
 
 
 </LinearLayout>

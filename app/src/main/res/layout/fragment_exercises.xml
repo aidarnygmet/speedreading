@@ -8,29 +8,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="300dp"
             android:layout_height="500dp"
-            android:background="@drawable/layout_bg"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintHorizontal_bias="0.495"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496">
+            app:layout_constraintVertical_bias="0.497">
 
             <Button
                 android:id="@+id/schulte"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="Schulte Table"
-                android:textSize="17dp"
+                android:text="@string/schulte_table_exname"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/los"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,12 +35,11 @@
 
             <Button
                 android:id="@+id/los"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="Line of Sight"
-                android:textSize="17dp"
+                android:text="@string/line_of_sight_exname"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/evenNum"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,42 +47,40 @@
 
             <Button
                 android:id="@+id/evenNum"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="Even Numbers"
-                android:textSize="17dp"
+                android:text="@string/even_numbers_exname"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/button7"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/los"/>
+                app:layout_constraintTop_toBottomOf="@+id/los" />
 
             <Button
                 android:id="@+id/button7"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
                 android:text="Button"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toTopOf="@+id/button8"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/evenNum"/>
+                app:layout_constraintTop_toBottomOf="@+id/evenNum"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
             <Button
                 android:id="@+id/button8"
-                style="@style/Widget.Material3.Button.ElevatedButton"
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
                 android:text="Button"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button7"/>
+                app:layout_constraintTop_toBottomOf="@+id/button7" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

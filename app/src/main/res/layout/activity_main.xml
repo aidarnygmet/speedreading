@@ -33,21 +33,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/main" />
+            android:text="@string/main_m" />
 
         <Button
             android:id="@+id/exercises"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/exercises" />
+            android:text="@string/exercises_menu" />
 
         <Button
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/profile" />
+            android:text="@string/profile_menu" />
 
     </LinearLayout>
 

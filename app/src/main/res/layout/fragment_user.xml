@@ -15,7 +15,7 @@
             android:id="@+id/textView27"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView"
+            android:text="@string/textview"
             app:layout_constraintBottom_toTopOf="@id/spinner"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +23,15 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:spinnerMode="dropdown"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@id/graph"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView27" />
+            app:layout_constraintTop_toBottomOf="@+id/textView27"
+            tools:ignore="SpeakableTextPresentCheck" />
         <com.jjoe64.graphview.GraphView
             android:layout_width="match_parent"
             android:id="@+id/graph"

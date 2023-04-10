@@ -40,7 +40,6 @@ class exercises : Fragment() {
     private var param2: String? = null
     private lateinit var schulte: Button
     private lateinit var losb: Button
-    private lateinit var evenNum: Button
     private var result:String? = null
     private lateinit var evenNum: Button
     override fun onCreate(savedInstanceState: Bundle?) {

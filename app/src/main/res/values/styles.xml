@@ -4,6 +4,7 @@
 
         <item name="android:colorBackground">@color/dark_blue</item>
         <item name="android:windowBackground">@color/dark_blue</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Large</item>
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/Accent</item>
@@ -40,4 +41,10 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:textColorHint">@color/Background</item>
     </style>
+
+    <style name="TextAppearance.AppCompat.Large">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
