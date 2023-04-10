@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background"
     tools:context=".MainFragment">
 
     <EditText
@@ -12,22 +13,21 @@
         android:layout_width="294dp"
         android:layout_height="85dp"
         android:ems="10"
-        android:hint="@string/enter_text_here"
+        android:hint="Enter text here"
         android:textColorHint="@color/white"
         app:layout_constraintBottom_toTopOf="@id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:inputType="text"
-        android:importantForAutofill="no" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/speedText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/example"
-        android:textColor="#FFFFFF"
-        android:textSize="80sp"
+        android:text="Example"
+        android:background="#00000000"
+        android:textColor="#a9a9a9"
+        android:textSize="90sp"
         app:layout_constraintBottom_toTopOf="@+id/textSpeed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/submit"
+        android:text="Submit"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="@+id/selectButton"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,7 +47,7 @@
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/select"
+        android:text="Select"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"
@@ -79,36 +79,38 @@
         android:layout_width="290dp"
         android:layout_height="36dp"
         android:valueFrom="10"
-        android:valueTo="500"
+        android:valueTo="510"
+        android:stepSize="50"
         app:layout_constraintBottom_toTopOf="@id/textSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/speedText"
+        app:thumbColor="#808080"
         app:tickColorInactive="#FFFFFF"
-        app:trackColorActive="#FFFFFF"
-        app:trackColorInactive="#FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:trackColorActive="#808080"
+        app:trackColorInactive="#a9a9a9" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/textSize"
         android:layout_width="290dp"
         android:layout_height="38dp"
+        android:valueFrom="20"
+        android:valueTo="90"
+        android:stepSize="10"
         app:layout_constraintBottom_toTopOf="@id/startButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textSpeed"
-        app:tickColorActive="#FFFFFF"
+        app:thumbColor="#808080"
         app:tickColorInactive="#FFFFFF"
-        app:trackColorActive="#FFFFFF"
-        app:trackColorInactive="#FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:trackColorActive="#808080"
+        app:trackColorInactive="#a9a9a9" />
 
     <ImageButton
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/selector"
-        android:contentDescription="@string/start"
         android:src="@drawable/ic_baseline_play_circle_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

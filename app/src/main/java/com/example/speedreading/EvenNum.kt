@@ -1,22 +1,27 @@
 package com.example.speedreading
 
+//import androidx.navigation.findNavController
+//import androidx.navigation.ui.AppBarConfiguration
+//import androidx.navigation.ui.navigateUp
+//import androidx.navigation.ui.setupActionBarWithNavController
+//import com.example.evennumbers.databinding.ActivityMainBinding
+
 import android.graphics.Color
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
-//import androidx.navigation.findNavController
-//import androidx.navigation.ui.AppBarConfiguration
-//import androidx.navigation.ui.navigateUp
-//import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-//import com.example.evennumbers.databinding.ActivityMainBinding
+import retrofit2.Retrofit
+import retrofit2.awaitResponse
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 private lateinit var buttons: Array<Button>
@@ -31,15 +36,34 @@ class EvenNum : AppCompatActivity() {
     private var clickedNumbers = mutableListOf<Int>()
     private var remainingTimeMillis = 2 * 60 * 1000L
 
+    private lateinit var user_id:String
+    private val exercise_id = 2
+    private val performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
+        GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
+
+
+//    var date = Date()
+//    val performance = performance(exercise_id, user_id, score, date.toString())
+//    GlobalScope.launch{
+//        val response = performanceApi.save(performance).awaitResponse()
+//        if (response.isSuccessful) {
+//            Log.d("test", "success")
+//        } else {
+//            Log.d("test", "fail")
+//        }
+//    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_evennumbers)
-
+        setContentView(R.layout.activity_even_num)
         findViewById<Button>(R.id.start_button).setOnClickListener {
             resetGame()
             startTimer()
         }
-
+        val extras = intent.extras
+        if(extras != null){
+        user_id = extras.getString("userId").toString()
+        Log.d("test", "evennum $user_id")
+    }
         buttons = Array(40) { findViewById(resources.getIdentifier("button${it + 1}", "id", packageName)) }
     }
 

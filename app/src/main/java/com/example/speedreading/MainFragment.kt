@@ -37,9 +37,8 @@ class MainFragment : Fragment(){
     private lateinit var textSpeed: Slider
     private lateinit var textSize: Slider
     private lateinit var textInput: EditText
-    private lateinit var submit: Button
     private lateinit var select: Button
-    private var textToRead = ""
+    private lateinit var textToRead: String
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         // Handle the returned Uri
@@ -51,8 +50,8 @@ class MainFragment : Fragment(){
 //                textToRead = reader.readText()
 //            }
 
-
-            Toast.makeText(activity,"File is opened", Toast.LENGTH_SHORT).show()
+            textToRead = uri.toString()
+            Toast.makeText(activity,textToRead, Toast.LENGTH_SHORT).show()
         };
 
     }
@@ -73,27 +72,18 @@ class MainFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_main, container, false)
-        submit = view.findViewById(R.id.submit)!!
         select = view.findViewById(R.id.selectButton)!!
-        textInput = view.findViewById(R.id.textInput)!!
         speedText = view.findViewById(R.id.speedText)!!
         start = view.findViewById(R.id.startButton)!!
         textSpeed = view.findViewById(R.id.textSpeed)!!
         textSize = view.findViewById(R.id.textSize)!!
-
-        submit.setOnClickListener {
-            textToRead = textInput.text.toString()
-            Log.d("test", textToRead)
-
-        }
-
 
         start.setOnClickListener(View.OnClickListener { v: View? ->
             // Intents are objects of the android.content.Intent type. Your code can send them to the Android system defining
             // the components you are targeting. Intent to start an activity called SecondActivity with the following code.
             val intent = Intent(activity, reading::class.java)
             // start the activity connect to the specified class
-            intent.putExtra("text", textToRead)
+            intent.putExtra("textUri", textToRead)
             intent.putExtra("speed", textSpeed.value.toInt())
             intent.putExtra("size", textSize.value)
             startActivity(intent)
@@ -101,7 +91,7 @@ class MainFragment : Fragment(){
 
 
         textSize.addOnChangeListener{
-                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value*50)
+                _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value)
         }
 
         select.setOnClickListener {
