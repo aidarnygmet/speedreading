@@ -16,6 +16,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.net.toFile
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.slider.Slider
 import java.io.BufferedReader
 import java.io.File
@@ -23,26 +26,37 @@ import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mainButton: Button
-    private lateinit var exercisesButton: Button
-    private lateinit var profileButton: Button
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        mainButton = findViewById(R.id.button6)
-        exercisesButton = findViewById(R.id.button5)
-        profileButton = findViewById(R.id.button4)
-        mainButton.setOnClickListener{
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, MainFragment.newInstance("1", "2")).commit()
+        val fragment_main = MainFragment()
+        val fragment_exercises = exercises()
+        val fragment_profile = Profile()
+        setCurrentFragment(fragment_main)
+        val myBottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom)
+        myBottomNavigationView.setOnNavigationItemSelectedListener {item->
+            when(item.itemId){
+                R.id.reading -> setCurrentFragment(fragment_main)
+                R.id.exercises -> setCurrentFragment(fragment_exercises)
+                R.id.profile -> setCurrentFragment(fragment_profile)
+            }
+            true
         }
-        profileButton.setOnClickListener{
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, Profile.newInstance("1", "2")).commit()
+        /*myBottomNavigationView.OnItemSelectedListener{
+            when(it.itemId){
+                R.id.reading -> setCurrentFragment(fragment_main)
+                R.id.exercises -> setCurrentFragment(fragment_exercises)
+                R.id.profile -> setCurrentFragment(fragment_profile)
+            }
+            true
+        }*/
+    }
+    private fun setCurrentFragment(fragment: Fragment){
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fragmentContainerView1, fragment)
+            commit()
         }
-        exercisesButton.setOnClickListener{
-            supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView1, exercises.newInstance("1", "2")).commit()
-        }
-
     }
 }
 

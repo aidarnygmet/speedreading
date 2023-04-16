@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/reading"
+        android:title="Reading"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_name"/>
+    <item
+        android:id="@+id/exercises"
+        android:title="Exercises"
+        android:enabled="true"
+        android:icon="@drawable/ic_exercises"/>
+    <item
+        android:id="@+id/profile"
+        android:title="Profile"
+        android:enabled="true"
+        android:icon="@drawable/user_outlined"/>
+</menu>

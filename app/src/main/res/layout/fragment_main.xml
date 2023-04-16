@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/background"
+    android:backgroundTint="@color/Background"
     tools:context=".MainFragment">
 
     <EditText
@@ -33,21 +33,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInput" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/submit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="@+id/selectButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInput"/>
+        app:layout_constraintTop_toBottomOf="@+id/textInput"
+        app:layout_constraintVertical_bias="0.538" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        style="@style/Widget.Material3.Button.ElevatedButton"
         android:id="@+id/selectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@+id/speedText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/submit"

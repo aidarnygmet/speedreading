@@ -10,21 +10,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background">
+        android:backgroundTint="@color/Background">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layercon"
-            android:layout_width="300dp"
-            android:layout_height="500dp"
-            android:background="@drawable/layout_bg"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.496"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.496"
-            tools:ignore="MissingClass">
+
 
 
 
@@ -38,7 +26,7 @@
                 android:ems="10"
                 android:hint="Password"
                 android:textColor="#000000"
-                android:textColorHint="#000000"
+                android:textColorHint="#808080"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -54,7 +42,7 @@
                 android:drawableLeft="@drawable/mail"
                 android:hint="Email"
                 android:textColor="#000000"
-                android:textColorHint="#000000"
+                android:textColorHint="#808080"
                 app:layout_constraintBottom_toTopOf="@+id/password"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +56,7 @@
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="Sign In"
+                android:text="Log In"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -82,7 +70,7 @@
                 android:layout_width="152dp"
                 android:layout_height="59dp"
                 android:layout_weight="1"
-                android:text="Sign Up"
+                android:text="Register"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -94,6 +82,6 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </FrameLayout>

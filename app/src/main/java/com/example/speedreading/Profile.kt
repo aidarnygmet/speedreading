@@ -70,7 +70,6 @@ class Profile : Fragment() {
         signup = view.findViewById(R.id.signup)
         username = view.findViewById(R.id.username)
         password = view.findViewById(R.id.password)
-        layer = view.findViewById(R.id.layercon)
         auth = Firebase.auth
         val blurEffect = RenderEffect.createBlurEffect(
             20f, //radiusX
