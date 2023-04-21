@@ -68,7 +68,7 @@ class los : AppCompatActivity() {
             user_id = extras.getString("userId").toString()
             Log.d("test", "los $user_id")
         }
-        var performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
+        var performanceApi = Retrofit.Builder().baseUrl("http://192.168.190.88:8080").addConverterFactory(GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
         actionButton.setOnClickListener {
             if(pressed){
 
@@ -81,6 +81,7 @@ class los : AppCompatActivity() {
                 for(i in list){
                     i.text = " ${getRandomString(1)} "
                 }
+                list[12].text = "*"
                 var randomSymbol = ""
                 var prevRandomSymbol = ""
                 countDown.text = countDownTimer.toString()

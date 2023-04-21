@@ -28,8 +28,7 @@ class reading : AppCompatActivity() {
     private var size: Float = 0.0F
     private var lastWord = 0
     private var isRunning = true
-
-    private lateinit var file: File
+    private lateinit var inputtext: String
     private lateinit var textUri: String
     private lateinit var text: TextView
     private lateinit var pause: ImageButton
@@ -51,18 +50,19 @@ class reading : AppCompatActivity() {
             textUri = extras.getString("textUri").toString()
             speed = extras.getInt("speed")
             size = extras.getFloat("size")
-            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size*50)
+            inputtext = extras.getString("input").toString()
+            text.setTextSize(TypedValue.COMPLEX_UNIT_SP, size)
             wpm.text = speed.toString()
         }
 
-        printwords2()
+        printWords()
         pause.setOnClickListener {
             if(isRunning){
                 isRunning = false
                 pause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24)
             } else {
                 isRunning = true
-                pause.setImageResource(R.drawable.ic_baseline_play_circle_filled_24)
+                pause.setImageResource(R.drawable.ic_baseline_pause_circle_filled_24)
                 printWords()
             }
         }
@@ -79,20 +79,24 @@ class reading : AppCompatActivity() {
         }
     }
     private fun printWords(){
-        var g = application.contentResolver.openInputStream(textUri.toUri())
-        val reader = BufferedReader(g?.reader() )
-        var content: String
-        reader.use { reader ->
-            content = reader.readText()
+        if(!textUri.isEmpty()) {
+            var g = application.contentResolver.openInputStream(textUri.toUri())
+            val reader = BufferedReader(g?.reader())
+            var content: String
+            reader.use { reader ->
+                content = reader.readText()
+            }
+            listToRead = content.split(" ")
+        } else{
+            listToRead = inputtext.split(" ")
         }
-        listToRead = content.split(" ")
         GlobalScope.launch {
             val x = lastWord
             for (i in x until listToRead.size){
                 if (isRunning){
                     runOnUiThread {
                         text.text = listToRead[i]
-//                        Log.d("test", "printWords: ${text.text}")
+                        Log.d("test", "printWords: ${text.text}")
                     }
                     lastWord = i
                     delay((60000/speed).toLong())

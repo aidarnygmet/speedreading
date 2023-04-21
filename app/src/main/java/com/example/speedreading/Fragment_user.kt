@@ -36,7 +36,7 @@ class fragment_user : Fragment() {
     private lateinit var user_id:String
     private lateinit var email: String
 
-    private var performanceApi = Retrofit.Builder().baseUrl("http://192.168.1.64:8080").addConverterFactory(
+    private var performanceApi = Retrofit.Builder().baseUrl("http://192.168.190.88:8080").addConverterFactory(
         GsonConverterFactory.create()).build().create(com.example.speedreading.performanceApi::class.java)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +61,7 @@ class fragment_user : Fragment() {
         }
         showText = view.findViewById(R.id.textView27)
         spinner = view.findViewById(R.id.spinner)
+
         Log.d("test", email)
 GlobalScope.launch {
     activity?.runOnUiThread {
@@ -112,7 +113,6 @@ GlobalScope.launch {
                         drawGraph(5)
                     }
 
-                    //drawGraph(item)
                 }
             }
             override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -147,7 +147,8 @@ GlobalScope.launch {
         var textview = view?.findViewById<TextView>(R.id.textView27)
         if (textview != null) {
             textview.textSize = 30F
-            textview.text = "Welcome, \n"+text+"!"
+            textview.setBackgroundColor(24);
+            textview.text = "       Welcome,\n"+text+"!"
         }
     }
 

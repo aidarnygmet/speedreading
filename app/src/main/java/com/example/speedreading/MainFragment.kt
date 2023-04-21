@@ -18,6 +18,7 @@ import java.io.BufferedReader
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import kotlinx.coroutines.GlobalScope
 import java.io.File
 
 
@@ -38,20 +39,14 @@ class MainFragment : Fragment(){
     private lateinit var textSize: Slider
     private lateinit var textInput: EditText
     private lateinit var select: Button
+    private lateinit var submit: Button
     private lateinit var textToRead: String
+    private lateinit var inputtext: String
 
     private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         // Handle the returned Uri
         if (uri != null) {
-//            var file = File(uri.path)
-//            var g = file.inputStream()
-//            val reader = BufferedReader(g?.reader() )
-//            reader.use { reader ->
-//                textToRead = reader.readText()
-//            }
-
             textToRead = uri.toString()
-            Toast.makeText(activity,textToRead, Toast.LENGTH_SHORT).show()
         };
 
     }
@@ -73,27 +68,38 @@ class MainFragment : Fragment(){
         // Inflate the layout for this fragment
         var view = inflater.inflate(R.layout.fragment_main, container, false)
         select = view.findViewById(R.id.selectButton)!!
+        submit = view.findViewById(R.id.submit)
         speedText = view.findViewById(R.id.speedText)!!
         start = view.findViewById(R.id.startButton)!!
         textSpeed = view.findViewById(R.id.textSpeed)!!
         textSize = view.findViewById(R.id.textSize)!!
-
+        textInput = view.findViewById(R.id.textInput)
+        textToRead = ""
+        inputtext = ""
         start.setOnClickListener(View.OnClickListener { v: View? ->
             // Intents are objects of the android.content.Intent type. Your code can send them to the Android system defining
             // the components you are targeting. Intent to start an activity called SecondActivity with the following code.
-            val intent = Intent(activity, reading::class.java)
-            // start the activity connect to the specified class
-            intent.putExtra("textUri", textToRead)
-            intent.putExtra("speed", textSpeed.value.toInt())
-            intent.putExtra("size", textSize.value)
-            startActivity(intent)
+            if(textToRead.isEmpty() && inputtext.isEmpty()){
+
+                activity?.runOnUiThread(Runnable{Toast.makeText(activity, "Text is required", Toast.LENGTH_SHORT).show()})
+            } else {
+                val intent = Intent(activity, reading::class.java)
+                // start the activity connect to the specified class
+                intent.putExtra("input", inputtext)
+                intent.putExtra("textUri", textToRead)
+                intent.putExtra("speed", textSpeed.value.toInt())
+                intent.putExtra("size", textSize.value)
+                startActivity(intent)
+            }
         })
 
 
         textSize.addOnChangeListener{
                 _, value, _ -> speedText.setTextSize(TypedValue.COMPLEX_UNIT_SP, value)
         }
-
+        submit.setOnClickListener {
+            inputtext = textInput.text.toString()
+        }
         select.setOnClickListener {
             Log.d("test", "sampletext")
             getContent.launch("text/*")

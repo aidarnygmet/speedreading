@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/Background"
     tools:context=".los">
 
     <TableLayout
@@ -24,30 +25,35 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text="* " />
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
         </TableRow>
 
@@ -60,27 +66,32 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text="* " />
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView8"
+                android:backgroundTint="@color/Background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView9"
+                android:backgroundTint="@color/Background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView10"
+                android:backgroundTint="@color/Background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
@@ -92,12 +103,14 @@
             android:layout_height="match_parent">
             <TextView
                 android:id="@+id/textView11"
+                android:backgroundTint="@color/Background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:text="* " />
             <TextView
                 android:id="@+id/textView12"
+                android:backgroundTint="@color/Background"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
@@ -105,6 +118,7 @@
             <TextView
                 android:id="@+id/textView13"
                 android:layout_width="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
                 android:text=" * " />
@@ -112,12 +126,14 @@
                 android:id="@+id/textView14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
 
@@ -130,6 +146,7 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text="* " />
             <TextView
@@ -137,23 +154,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="30dp"
+                android:backgroundTint="@color/Background"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
 
@@ -166,30 +187,35 @@
                 android:id="@+id/textView21"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text="* " />
             <TextView
                 android:id="@+id/textView22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView23"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
             <TextView
                 android:id="@+id/textView25"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:backgroundTint="@color/Background"
                 android:textSize="30dp"
                 android:text=" * " />
 
@@ -210,7 +236,6 @@
         android:id="@+id/textView26"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
